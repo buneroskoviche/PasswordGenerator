@@ -30,7 +30,7 @@ const generatePassword = () => {
   }
   // Run the chooseCharacters function and assign it's value to a variable
   const characters = chooseCharacters();
-
+  console.log(characters);
 }
 
 // Create a function where a string of characters is created based on a series of prompts
@@ -49,18 +49,17 @@ const chooseCharacters = () => {
       return "";
     }
   }
-  // Run the function for each character type
-  const lower = characterString("lower case letters", lowerCase);
-  const upper = characterString("upper case letters", upperCase);
-  const nums = characterString("numbers", numerals);
-  const special = characterString("special characters", specialChars);
-  // Merge the strings into one
-  const merge = lower + upper + nums + special;
-  // Check if the string is blank. If so, rerun the function
+  // Run the function for each character type and merge them into one string
+  let merge = characterString("lower case letters", lowerCase)
+   + characterString("upper case letters", upperCase)
+   + characterString("numbers", numerals)
+   + characterString("special characters", specialChars);
+  // Check if the merged string is blank. If so, rerun the function for a new string
   if (merge === "") {
     window.alert("Please select at least one character type");
-    chooseCharacters();
+    validatedMerge = chooseCharacters();
+    return validatedMerge;
+  } else {
+    return merge;
   }
-  // Return the combined string of characters
-  return merge;
 }
