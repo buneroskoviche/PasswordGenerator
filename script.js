@@ -28,25 +28,47 @@ const generatePassword = () => {
   if (passLength === 69) {
     window.alert("Nice.");
   }
-
-  // Ask the user if they want lower case letters
-  const lowerConfirm = window.confirm("Would you like the password to contain lower case letters?");
-  // Ask the user if they want upper case letters
-  const upperConfirm = window.confirm("Would you like the password to contain upper case letters?");
-  // Ask the user if they want numbers
-  const numberConfirm = window.confirm("Would you like the password to contain numbers?");
-  // Ask the user if they want special characters
-  const specialConfirm = window.confirm("Would you like the password to contain special characters?");
+  // Run the chooseCharacters function and assign a variable
+  const characters = chooseCharacters();
   // Check if at least one of the confirms above was chosen. If not, restart
-  if (!lowerConfirm && !upperConfirm && !numberConfirm && !specialConfirm) {
+  if (characters === "") {
     window.alert("Please select at least one character type");
     return "Try again";
   }
 
-  var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  var lowerCase = upperCase.toLowerCase();
-  console.log(lowerCase);
-  var numerals = "123456789"
-  var specialChars = "!@#$%^&*?+-=_"
-
 }
+
+// Create a function where a string of characters is created based on a series of prompts
+const chooseCharacters = () => {
+  // Declare variables containing potential password characters
+  const lowerCase = "abcdefghijklmnopqrstuvwxyz";
+  const upperCase = lowerCase.toUpperCase();
+  const numerals = "0123456789";
+  const specialChars = "!@#$%^&*?+-=_";
+  // Create a function to ask a question, then return it's string of characters if true, return blank if false
+  function characterString(question, string) {
+    const confirmed = window.confirm(question);
+    if (confirmed) {
+      return string;
+    } else {
+      return "";
+    }
+  }
+  // Run the function for each character type
+  let lower = characterString("Would you like lower case letters?", lowerCase);
+  let upper = characterString("Would you like upper case letters?", upperCase);
+  let nums = characterString("Would you like numbers?", numerals);
+  let special = characterString("Would you like special characters?", specialChars);
+  // Return the combined string of characters
+  return lower + upper + nums + special;
+}
+
+
+//  // Ask the user if they want lower case letters
+//  const lowerConfirm = window.confirm("Would you like the password to contain lower case letters?");
+//  // Ask the user if they want upper case letters
+//  const upperConfirm = window.confirm("Would you like the password to contain upper case letters?");
+//  // Ask the user if they want numbers
+//  const numberConfirm = window.confirm("Would you like the password to contain numbers?");
+//  // Ask the user if they want special characters
+//  const specialConfirm = window.confirm("Would you like the password to contain special characters?");
