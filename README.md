@@ -7,3 +7,4 @@ The user can determine the length of the password, as well as what characters wi
 https://buneroskoviche.github.io/PasswordGenerator/
 
 # Screenshot
+![screenshot](https://user-images.githubusercontent.com/80650523/117381766-0c549b00-ae9a-11eb-9bee-82b554fb74cc.PNG)
