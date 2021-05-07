@@ -30,7 +30,14 @@ const generatePassword = () => {
   }
   // Run the chooseCharacters function and assign it's value to a variable
   const characters = chooseCharacters();
-  console.log(characters);
+  // Create an empty array to put characters into
+  let passArray = [];
+  // Run a 'for' loop based on the length chosen, to put a random digit from the characters string into the array
+  for (var i = 0; i < passLength; i++) {
+    passArray.push(characters[Math.floor(Math.random() * characters.length)])
+  }
+  // Convert the array of characters into a string and return it
+  return passArray.join("");
 }
 
 // Create a function where a string of characters is created based on a series of prompts
@@ -54,7 +61,7 @@ const chooseCharacters = () => {
    + characterString("upper case letters", upperCase)
    + characterString("numbers", numerals)
    + characterString("special characters", specialChars);
-  // Check if the merged string is blank. If so, rerun the function for a new string
+  // Check if the merged string is blank. If so, rerun the function for a new string and return it instead
   if (merge === "") {
     window.alert("Please select at least one character type");
     validatedMerge = chooseCharacters();
